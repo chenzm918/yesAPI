@@ -1,0 +1,28 @@
+import os
+import time
+
+
+
+
+#获取动态时间
+
+TIME = time.strftime("%Y_%m_%d_%H_%S")
+# print(TIME)
+#获取当前路径current
+CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
+# print(CURRENT_PATH)
+# #获取基本路径
+BATH_PATH ='\\'.join(CURRENT_PATH.split('\\')[0:-1])
+
+# #获取数据的路径
+DATA_PATH = os.path.join(BATH_PATH,'data')
+
+#获取报告的路径
+REPORT_PATH = os.path.join(BATH_PATH,"report")
+
+# #获取用例的路径
+CASE_PATH = os.path.join(BATH_PATH,"case")
+
+# #获取模板的路径
+TEMPLATE_PATH = os.path.join(BATH_PATH,"template")
+
