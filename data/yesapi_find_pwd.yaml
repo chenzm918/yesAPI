@@ -1,0 +1,62 @@
+- #找回密码成功_必填项正确
+ url: "http://hn216.api.yesapi.cn/"
+ method: POST
+ data:
+   s: App.User.SendResetPasswordEmailCode
+   app_key: C994CAD603F44C998700EB802A9240D0
+   username: tom
+ check:
+   - ret=200
+   - err_code=2
+   - err_msg=会员邮箱为空或邮箱地址非法
+ doc:
+   "找回密码成功_必填项正确"
+- #找回密码失败_appkey长度不是32位
+ url: "http://hn216.api.yesapi.cn/"
+ method: POST
+ data:
+     s: App.User.SendResetPasswordEmailCode
+     app_key: C994CAD603F44C998700EB802A9240D03
+     username: tom
+ check:
+       - ret=400
+       - msg=客户端非法请求
+ doc:
+       "找回密码失败_appkey长度不是32位"
+- #找回密码失败_appkey为空
+ url: "http://hn216.api.yesapi.cn/"
+ method: POST
+ data:
+     s: App.User.SendResetPasswordEmailCode
+     app_key:
+     username: tom
+ check:
+   - ret=400
+   - msg=客户端非法请求：缺少必要参数
+ doc:
+       "找回密码失败_app_key为空"
+- #找回密码失败_用户名为空
+ url: "http://hn216.api.yesapi.cn/"
+ method: POST
+ data:
+     s: App.User.SendResetPasswordEmailCode
+     app_key: C994CAD603F44C998700EB802A9240D0
+     username:
+ check:
+   - ret=400
+   - msg=客户端非法请求：缺少必要参数
+ doc:
+       "找回密码失败_用户名为空"
+- #找回密码失败_用户名不存在
+ url: "http://hn216.api.yesapi.cn/"
+ method: POST
+ data:
+     s: App.User.SendResetPasswordEmailCode
+     app_key: C994CAD603F44C998700EB802A9240D0
+     username: peter
+ check:
+   - ret=200
+   - err_code=2
+   - err_msg=会员邮箱为空或邮箱地址非法
+ doc:
+       "找回密码失败_用户名不存在"
