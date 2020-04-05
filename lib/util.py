@@ -19,3 +19,7 @@ def hash_code(pwd):
 def set_res_data(res):
     if res:
         return res.replace('":"',"=").replace('":',"=")
+
+
+def get_login_token():
+    pass
