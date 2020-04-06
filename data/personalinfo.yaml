@@ -1,0 +1,201 @@
+- #获取成功，全部必选正确
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: true
+  _uuid: true
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取成功，全部必选正确
+  check:
+    - ret=200
+    - err_code=0
+    - '"err_msg="'
+- #获取失败，app_key为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: true
+  _uuid: true
+  data:
+    app_key: ~
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，app_key为空
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：缺少必要参数app_key"'
+- #获取失败，app_key长度为0
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: true
+  _uuid: true
+  data:
+    app_key: ""
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，app_key长度为0
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 0"'
+- #获取失败，app_key长度大于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: true
+  _uuid: true
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546Clll
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，app_key长度大于32
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：app_key.len应该小于等于32, 但现在app_key.len = 35"'
+- #获取失败，app_key为其他url的
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: true
+  _uuid: true
+  data:
+    app_key: 85F6F9A15147D04E7573597397ACEF9A
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，app_key为其他url的
+  check:
+    - ret=406
+    - '"msg=客户端非法请求：非法app_key，请核对你所在的接口域名（a.yesapi.cn\/3Eir71）"'
+
+- #获取失败，uuid为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _uuid: false
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    uuid: ~
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，uuid为空
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：缺少必要参数uuid"'
+- #获取失败，uuid长度为0
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _uuid: false
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    uuid: ''
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，uuid长度为0
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：uuid.len应该大于或等于32, 但现在uuid.len = 0"'
+
+- #获取失败，uuid为其他用户的
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _uuid: false
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    uuid: BAA1E63C14E57F86BC3F20E452C5E9FA
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，uuid为其他用户的
+  check:
+    - ret=401
+    - '"msg=客户端非法请求：登录会话已过期，请重新登录"'
+
+- #获取失败，uuid长度大于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _uuid: false
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    uuid: BAA1E63C14E57F86BC3F20E452C5E9FAlll
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，uuid长度大于32
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 35"'
+
+- #获取失败，token为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: false
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    token: ~
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，token为空
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：缺少必要参数token"'
+- #获取失败，token长度为0
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: false
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    token: ''
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，token长度为0
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：token.len应该大于或等于64, 但现在token.len = 0"'
+- #获取失败，token长度大于64
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: false
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    token: F0126754D48ADCE697BE176B2761F0E60AB9FA56C527E55110680D08F0A59E85jj
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，token长度大于64
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 66"'
+
+- #获取失败，过期token
+  url: http://hd215.api.yesapi.cn/?s=App.User.Profile
+  _token: false
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    token: 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+  data_login:
+    login_url: http://hd215.api.yesapi.cn/?s=App.User.Login
+    login_app_key: 6E53696D88F898D8D7771E708F83546C
+    username: aaa
+    password: '123456'
+  doc: 获取失败，过期token
+  check:
+    - ret=401
+    - '"msg=客户端非法请求：登录会话已过期，请重新登录"'
