@@ -1,0 +1,158 @@
+- #正向删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid: 83609D93F52075AD33BBED8FC9210995
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 9BF22323111843BBCFFF20DC04B90B42
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+- #app_key错误删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: C994CAD603F44C998700EB802A9240D0
+    admin_uuid: 83609D93F52075AD33BBED8FC9210995
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=401
+    - msg=客户端非法请求：登录会话已过期，请重新登录
+- #app_key为空删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key:
+    admin_uuid: 83609D93F52075AD33BBED8FC9210995
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=400
+    - msg=客户端非法请求：缺少必要参数app_key
+- #app_key长度为31删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC406
+    admin_uuid: 83609D93F52075AD33BBED8FC9210995
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=400
+    - msg=客户端非法请求：app_key.len应该大于或等于32
+- #other_uuid错误删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid: 83609D93F52075AD33BBED8FC9210995
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+- #other_uuid长度为31删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid: 83609D93F52075AD33BBED8FC9210995
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=400
+    - msg=客户端非法请求：other_uuid.len应该大于或等于32
+- #other_uuid为空删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid: 83609D93F52075AD33BBED8FC9210995
+    s: App.User.RemoveUserForAdmin
+    other_uuid:
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=400
+    - msg=客户端非法请求：缺少必要参数
+- #admin_uuid错误删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid: D5E7EFC2E1C548B2C9D0A66AC7945E66
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=401
+    - msg=客户端非法请求：登录会话已过期，请重新登录
+- #admin_uuid长度为31删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid: 83609D93F52075AD33BBED8FC921099
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=400
+    - msg=客户端非法请求：admin_uuid.len应该大于或等于32
+- #admin_uuid长度为空删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid:
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB8
+  check:
+    - ret=400
+    - msg=客户端非法请求：缺少必要参数admin_uuid
+- #admin_token错误删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid: 83609D93F52075AD33BBED8FC9210990
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB0
+  check:
+    - ret=401
+    - msg=客户端非法请求：登录会话已过期，请重新登录
+- #admin_token为空删除会员
+  url: http://hn216.api.yesapi.cn/?s=App.User.RemoveUserForAdmin
+  method: post
+  jiami: true
+  data:
+    app_key: FAE3543ABF952E7EBDCF339D30FC4061
+    admin_uuid:
+    s: App.User.RemoveUserForAdmin
+    other_uuid: 39184C9CE88B740E04139ADC6054844E
+    admin_token: EA22E2F305A9F8FD4BBED55458B6D1E596813F60A7FBC07FD0EF6C4B7DD7BDB0
+  check:
+    - ret=400
+    - msg=客户端非法请求：缺少必要参数admin_uuid

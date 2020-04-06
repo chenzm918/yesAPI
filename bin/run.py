@@ -19,3 +19,6 @@ file_name = '{}接口测试.html'.format(TIME)
 discover =unittest.defaultTestLoader.discover(CASE_PATH,'test*.py')
 
 BeautifulReport(discover).report(description='接口测试',filename=file_name,log_path=REPORT_PATH)
+
+
+
