@@ -32,24 +32,18 @@ class Yesapi_Update_Extend_Info(unittest.TestCase):
         if jiami == True:
             if 'password' in datal:
                 datal['password'] = hash_code(str(datal['password']))
+        if tokenis == True:
+            # 获取登录的token值
+            resl = requests.post(API_URL, data=datal)
+            resl = resl.json()
+            token = resl.get("data").get("token")
+            data["token"] = token
         if method.lower() == 'post':
-            if tokenis==True:
-                #获取登录的token值
-                resl=requests.post(API_URL,data=datal)
-                resl=resl.json()
-                token=resl.get("data").get("token")
-                data["token"]=token
             if ext_infois==True:
                 data["ext_info"]=json.dumps(data["ext_info"])
             res = requests.post(API_URL, data=data)
             resp = res.text
-        else:
-            if tokenis == True:
-                # 获取登录的token值
-                resl = requests.post(API_URL, data=datal)
-                resl = resl.json()
-                token = resl.get("data").get('token')
-                data["token"] = token
+        elif method.lower()=='get':
             if ext_infois==True:
                 data["ext_info"]=json.dumps(data["ext_info"])
             res = requests.get(API_URL, params=data)
