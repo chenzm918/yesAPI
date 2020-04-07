@@ -13,6 +13,7 @@ import requests
 import unittest
 import ddt
 
+from lib.util import hash_code, set_res_data
 from model.setting import *
 
 
@@ -22,22 +23,28 @@ class SearchTest(unittest.TestCase):
     @ddt.file_data(os.path.join(DATA_PATH,'search.yaml'))
     def test_search(self, **kwargs):
         # 获取参数值
+        global resp
         url = kwargs.get("url")
         data = kwargs.get("data")
         check = kwargs.get("check")
+        method = kwargs.get('method')
+        jiami = kwargs.get('jiami')
         self._testMethodDoc = kwargs.get("detail")
-        # # 数据处理
-        # if "password" in data:
-        #     password = pwd_hash(data["password"])
-        #     data["password"] = password
-        # username = data["username"]
-        # number = random.randint(30,100000)
-        # data["username"] = "%s_%d" % (username,number)
+        method = kwargs.get('method')
+        jiami = kwargs.get('jiami')
+        if jiami == True:
+            if 'password' in data:
+                data['password'] = hash_code(str(data['password']))
+        if method.lower() == 'post':
+            res = requests.post(url, data=data)
+            resp = res.text
+        elif method.lower() == 'get':
+            res = requests.get(url, params=data)
+            resp = res.text
+        resp = set_res_data(resp)
         # 断言
-        result = requests.request('post', url, json=data)
-        result = result.text.replace('":"', '=').replace('":', '=')
         for i in check:
-            self.assertIn(i, result)
+            self.assertIn(i, resp)
 
 
 if __name__ == '__main__':

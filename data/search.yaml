@@ -1,4 +1,5 @@
-- # 所有选项输入合法
+- # 所有选项输入合法，精确匹配用户名
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -6,59 +7,71 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
     username: tt
     num : 10
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - username=tt
   detail:
     "测试搜索成功"
 
-- # 必填项输入合法
+- # 必填项输入合法，匹配所有用户名
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
-
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - username=tt
+    - uesrs=
   detail:
     "测试搜索成功"
 
 - # 必填项APP_key为空
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key:
-
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 0'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，APP_key为空"
 
 - # 必填项APP_key大于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key:E1AECD502087E03E96B219098075870Baa
-
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：app_key.len应该小于等于32, 但现在app_key.len = 34'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，APP_key大于32"
 
 - # 必填项APP_key小于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key:E1AECD502087E03E96B2
-
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 20'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，APP_key小于32"
 
 - # token大于64
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -66,13 +79,16 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274aa
     username: tt
     num : 10
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 66"'
   detail:
-    "测试搜索失败"
+    "测试搜索失败，token大于64"
 
 - # token小于64
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -80,13 +96,16 @@
     token : asd
     username: tt
     num : 10
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：token.len应该大于或等于64, 但现在token.len = 3'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，token小于64"
 
 - # token为空
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -94,14 +113,17 @@
     token :
     username: tt
     num : 10
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：token.len应该大于或等于64, 但现在token.len = 0'"
   detail:
-    "测试搜索成功"
+    "测试搜索失败,token为空"
 
 - # 用户名有特殊字符
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -109,13 +131,17 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
     username: tt@
     num : 10
+  jiami: true
+  tokenis: true
   check:
     - ret=200
-    - msg=
+    - users=
+    - err_code=0
   detail:
-    "测试搜索失败"
+    "测试搜索失败，用户名有特殊字符"
 
 - # uuid大于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -123,13 +149,16 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
     username: tt
     num : 10
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 38'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，uuid大于32"
 
 - # uuid小于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -137,14 +166,17 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
     username: tt
     num : 10
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 20'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，uuid小于32"
 
 - # uuid为空
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -152,6 +184,8 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
     username: tt
     num : 10
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
@@ -160,6 +194,7 @@
     "测试搜索成功"
 
 - # num大于100
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -167,13 +202,16 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
     username: tt
     num : 101
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：num应该小于等于100, 但现在num = 101'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，num大于100"
 
 - # num小于1
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -181,13 +219,16 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
     username: tt
     num : 0.1
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：num应该大于或等于1, 但现在num = 0'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，num小于1"
 
 - # num为非数字
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.Search
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -195,9 +236,11 @@
     token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
     username: tt
     num : 谭谭
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：num应该大于或等于1, 但现在num = 0'"
   detail:
-    "测试搜索失败"
+    "测试搜索失败，num为非数字"
 
