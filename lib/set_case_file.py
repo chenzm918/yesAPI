@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 '''
-@author:chengbaiquan
+@author:wangzhidong
 @software:apitest
 @file:set_case_file.py
 @time:2020-04-02  21:25
