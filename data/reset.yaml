@@ -1,0 +1,256 @@
+- # 所有选项输入合法
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    code : 123
+    newpassword : e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码成功"
+
+- # 必填项输入合法
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码成功"
+
+- # 必填项APP_key为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key:
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码失败"
+
+- # 必填项APP_key大于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key : E1AECD502087E03E96B219098075870Baa
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码失败"
+
+- # 必填项APP_key小于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key : E1AECD502087E03E96B2
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码失败"
+
+- # new_password为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+    data:
+      app_key: E1AECD502087E03E96B219098075870B
+      uuid: 6D0FD9A61A586CA1DDA551690542655B
+      token: 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+      username: tt
+      code: 123
+      newpassword:
+    check:
+      - ret=200
+      - err_code=0
+      - err_msg=
+    detail:
+      "测试重置密码失败"
+
+- # new_password小于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid: 6D0FD9A61A586CA1DDA551690542655B
+    token: 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59ab
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码失败"
+
+- # new_password大于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid: 6D0FD9A61A586CA1DDA551690542655B
+    token: 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883ewwwwwwwwwwww
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码失败"
+
+- # uuid大于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655Basdasd
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试重置密码失败"
+
+- # uuid小于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1D
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码失败"
+
+- # uuid为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid :
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试重置密码成功"
+
+- # username大于50
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: ttwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试重置密码失败"
+
+- # username为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username:
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试重置密码失败"
+
+- # username含有特殊字符
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt@@@
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试重置密码失败"
+
+- # token大于64
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid: 6D0FD9A61A586CA1DDA551690542655B
+    token: 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274sss
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试重置密码失败"
+
+- # token小于64
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid: 6D0FD9A61A586CA1DDA551690542655B
+    token: 66582C4E41ED740F4EAABB25C
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试重置密码失败"
+
+- # token为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid: 6D0FD9A61A586CA1DDA551690542655B
+    token:
+    username: tt
+    code: 123
+    newpassword: e10adc3949ba59abbe56e057f20f883e
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试重置密码失败"
