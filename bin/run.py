@@ -13,8 +13,8 @@ from BeautifulReport import BeautifulReport
 from lib.set_case_file import create_case_file
 from model.setting import *
 
-#首先生成测试用例
-# create_case_file()
+# 首先生成测试用例
+create_case_file()
 
 
 file_name = '{}接口测试.html'.format(TIME)
@@ -22,3 +22,7 @@ file_name = '{}接口测试.html'.format(TIME)
 discover =unittest.defaultTestLoader.discover(CASE_PATH,'test*.py')
 
 BeautifulReport(discover).report(description='接口测试',filename=file_name,report_dir=REPORT_PATH)
+
+
+
+

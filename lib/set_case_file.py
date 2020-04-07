@@ -13,7 +13,7 @@ def create_case_file():
     从data目录中找到所有的yaml文件
     使用case_template.txt作为模板，生成测试用例文件
     """
-    file_lists=os.listdir(DATA_PATH)#取出data目录下的所有文件
+    file_lists=os.listdir(TEST_DATA_PATH)#取出data目录下的所有文件
     template_file=os.path.join(TEMPLATE_PATH,'case_template.txt')
     print(template_file)
     for fList in file_lists:

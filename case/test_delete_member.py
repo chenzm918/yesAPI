@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 '''
-@author:chengbaiquan
+@author:wangzhidong
 @software:apitest
 @file:test_login_all.py
 @time:2020-04-01  21:53
@@ -18,7 +18,7 @@ from model.setting import *
 
 @ddt.ddt
 class Delete_member(unittest.TestCase):
-    @ddt.file_data(os.path.join(DATA_PATH,'delete_member.yaml'))
+    @ddt.file_data(os.path.join(TEST_DATA_PATH,'delete_member.yaml'))
     def test_delete_member(self,**case_data):
         url=case_data.get('url')
         data=case_data.get('data')

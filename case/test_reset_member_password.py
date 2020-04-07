@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 '''
-@author:chengbaiquan
+@author:wangzhidong
 @software:apitest
 @file:test_login_all.py
 @time:2020-04-01  21:53
@@ -18,7 +18,7 @@ from model.setting import *
 
 @ddt.ddt
 class Reset_member_password(unittest.TestCase):
-    @ddt.file_data(os.path.join(DATA_PATH,'reset_member_password.yaml'))
+    @ddt.file_data(os.path.join(TEST_DATA_PATH,'reset_member_password.yaml'))
     def test_reset_member_password(self,**case_data):
         url=case_data.get('url')
         data=case_data.get('data')

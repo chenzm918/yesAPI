@@ -25,7 +25,7 @@ BATH_PATH ='\\'.join(CURRENT_PATH.split('\\')[0:-1])
 
 # #获取数据的路径
 DATA_PATH = os.path.join(BATH_PATH,'data')
-
+TEST_DATA_PATH = os.path.join(DATA_PATH,'test_19and20')
 #获取报告的路径
 REPORT_PATH = os.path.join(BATH_PATH,"report")
 # #获取用例的路径
