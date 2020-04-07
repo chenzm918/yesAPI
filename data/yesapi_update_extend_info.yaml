@@ -108,7 +108,7 @@
     ext_info:
       nickname: "supertom"
       age: 28
-      location: "四川"
+      location: "四川成都"
   datalogin:
       s: App.User.Login
       app_key: C994CAD603F44C998700EB802A9240D0
