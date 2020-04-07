@@ -19,7 +19,6 @@
   ext_infois: true
   check:
     - ret=200
-    - err_code=0
     - err_msg=
     - ext_info=
   doc:
@@ -47,8 +46,6 @@
   check:
     - ret=400
     - msg=客户端非法请求：缺少必要参数app_key
-    - err_code=
-    - err_msg=
     - ext_info=
   doc:
     "修改会员扩展信息失败_app_key为空"
@@ -75,8 +72,6 @@
   check:
     - ret=400
     - msg=客户端非法请求：缺少必要参数uuid
-    - err_code=0
-    - err_msg=
     - ext_info=
   doc:
     "修改会员扩展信息失败_uuid为空"
@@ -103,8 +98,6 @@
   check:
     - ret=400
     - msg=客户端非法请求
-    - err_code=0
-    - err_msg=
     - ext_info=
   doc:
     "修改会员扩展信息成功_必填项正确"
@@ -130,8 +123,6 @@
   check:
     - ret=400
     - msg=客户端非法请求
-    - err_code=0
-    - err_msg=
     - ext_info=
   doc:
     "修改会员扩展信息失败_ext_info格式错误"
