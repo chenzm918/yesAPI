@@ -7,6 +7,7 @@
 @time:2020/4/3  15:13
 @desc
 """
+
 import os
 import requests
 import unittest
@@ -14,16 +15,20 @@ import ddt
 
 from model.setting import DATA_PATH
 
+#接口说明：原密码用户注册接口
+#进行新用户注册，创建一个新的会员账号，注册密码使用原始密码。
+#必须要传的参数有app_key、username、password
+#密码不用md5加密
+#app_key长度为32、密码长度为大于1、usename(1,50)
 
 @ddt.ddt
 class Register(unittest.TestCase):
     @ddt.file_data(os.path.join(DATA_PATH, 'original_password_register.yaml'))
     def test_login(self, **cases_data):
-        # 获取数据
         url = cases_data.get("url")
-        data = cases_data.get("data",'无')
+        data = cases_data.get("data")
         check = cases_data.get("check")
-        self._testMethodDoc = data.get('doc')
+        self._testMethodDoc = data.get('doc', '无')
 
         # 发送请求
         result = requests.post(url=url, data=data)
