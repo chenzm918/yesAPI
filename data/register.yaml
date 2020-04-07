@@ -1,0 +1,199 @@
+- #注册成功
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    username: random3
+    password: "123456"
+  MD_5: true
+  doc: 注册成功_所有必填项全部合法
+  check:
+    - ret=200
+    - err_code=0
+    - '"err_msg="'
+- #注册成功,用户名长度为50
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    username: czm2ddddddddddddddddddddddddddddddddddddddddddddo6
+    password: "123456"
+  MD_5: true
+  doc: 注册成功,用户名长度为50
+  check:
+    - ret=200
+    - err_code=0
+    - '"err_msg="'
+- #注册成功
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    uuid: BEC42DB48C3E8BB708C220CA0BA413D2
+    token: 046D9BB4DC95AD9EDCA5B1E1D0D009A844E87FC033980B39795437EA7EA3686E
+    username: vbl
+    password: "123456"
+    ext_info: '{"yesapi_nickname":"haizei"}'
+  MD_5: true
+  doc: 注册成功_所有必填选填全部正确
+  check:
+    - ret=200
+    - err_code=0
+    - '"err_msg="'
+- #注册失败，app_key为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key:
+    username: uuu
+    password: "123456"
+  MD_5: true
+  doc: 注册失败，app_key为空
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：缺少必要参数app_key"'
+- #注册失败，app_key存在但是不是这个用户的
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: F7141590C58D71D731D2C379BB2CCA4A
+    username: ppp
+    password: "123456"
+  MD_5: true
+  doc: 注册失败，app_key存在但是不是这个用户的
+  check:
+    - ret=406
+    - '"msg=客户端非法请求：非法app_key，请核对你所在的接口域名（a.yesapi.cn\/3Eir71）"'
+- #注册失败，app_key错误
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708m83546c
+    username: ppp
+    password: "123456"
+  MD_5: true
+  doc: 注册失败，app_key错误
+  check:
+    - ret=406
+    - '"msg=客户端非法请求：非法app_key，请核对你所在的接口域名（a.yesapi.cn\/3Eir71）"'
+- #注册失败，username为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    username: ppp
+    password: "123456"
+  MD_5: true
+  doc: 注册失败，username为空
+  check:
+    - ret=406
+    - '"msg=客户端非法请求：username.len应该大于或等于1"'
+- #注册失败，username长度不合法
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708m83546c
+    username: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxsssssssssbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    password: "123456"
+  MD_5: true
+  doc: 注册失败，username长度不合法
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：username.len应该小于等于50, 但现在username.len = 75"'
+
+- #注册失败，用户名已存在
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    username: ppp
+    password: "123456"
+  MD_5: true
+  doc: 注册失败，用户名已存在
+  check:
+    - ret=200
+    - err_code=1
+    - '"err_msg=用户已注册，不能重复注册"'
+- #注册失败，密码为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    username: good
+    password:
+  doc: 注册失败，密码为空
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：缺少必要参数password"'
+
+- #注册失败，密码为长度为0
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    username: good
+    password: ''
+  MD_5: true
+  doc: 注册失败，密码为长度为0
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：password.len应该大于或等于32"'
+
+- #注册失败，密码未加密
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    username: ppp
+    password: "77777"
+  MD_5: false
+  doc: 注册失败，密码未加密
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：password.len应该大于或等于32, 但现在password.len = 5"'
+
+- #注册失败，ext_info不是json格式的
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    uuid: BEC42DB48C3E8BB708C220CA0BA413D2
+    token: 046D9BB4DC95AD9EDCA5B1E1D0D009A844E87FC033980B39795437EA7EA3686E
+    username: dls
+    password: "123456"
+    ext_info: haizei
+  MD_5: true
+  doc: 注册失败，ext_info不是json格式的
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：参数ext_info的JSON数据格式错误"'
+- #注册失败，uuid长度不合法
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    uuid: DC607B6CFB1EBA73D50194AB9CC0AABCCCC
+    token: 046D9BB4DC95AD9EDCA5B1E1D0D009A844E87FC033980B39795437EA7EA3686E
+    username: dls
+    password: "123456"
+    ext_info: '{"yesapi_nickname":"haizei"}'
+  MD_5: true
+  doc: 注册失败，uuid长度不合法
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 35"'
+- #注册失败，uuid存在是其他用户的，不是登录用户的
+  url: http://hd215.api.yesapi.cn/?s=App.User.Register
+  method: post
+  data:
+    app_key: 6E53696D88F898D8D7771E708F83546C
+    uuid: DC607B6CFB1EBA73D50194AB9CC0AABCCCC
+    token: 046D9BB4DC95AD9EDCA5B1E1D0D009A844E87FC033980B39795437EA7EA3686E
+    username: dls
+    password: "123456"
+    ext_info: '{"yesapi_nickname":"haizei"}'
+  MD_5: true
+  doc: 注册失败，uuid存在是其他用户的，不是登录用户的
+  check:
+    - ret=400
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 35"'

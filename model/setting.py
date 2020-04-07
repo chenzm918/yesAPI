@@ -30,6 +30,8 @@ DATA_PATH = os.path.join(BATH_PATH,'data')
 REPORT_PATH = os.path.join(BATH_PATH,"report")
 # #获取用例的路径
 CASE_PATH = os.path.join(BATH_PATH,"case")
-
+print(CASE_PATH)
 # #获取模板的路径
 TEMPLATE_PATH = os.path.join(BATH_PATH,"template")
+
+
