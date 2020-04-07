@@ -24,11 +24,12 @@ from model.setting import DATA_PATH
 @ddt.ddt
 class Register(unittest.TestCase):
     @ddt.file_data(os.path.join(DATA_PATH, 'original_password_register.yaml'))
-    def test_login(self, **cases_data):
+    def test_register(self, **cases_data):
         url = cases_data.get("url")
         data = cases_data.get("data")
         check = cases_data.get("check")
-        self._testMethodDoc = data.get('doc', '无')
+        self._testMethodDoc = cases_data.get('doc')
+        print(self._testMethodDoc)
 
         # 发送请求
         result = requests.post(url=url, data=data)
