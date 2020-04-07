@@ -1,0 +1,203 @@
+- # 所有选项输入合法
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    num : 10
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试搜索成功"
+
+- # 必填项输入合法
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试搜索成功"
+
+- # 必填项APP_key为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key:
+
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
+- # 必填项APP_key大于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key:E1AECD502087E03E96B219098075870Baa
+
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
+- # 必填项APP_key小于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key:E1AECD502087E03E96B2
+
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
+- # token大于64
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274aa
+    username: tt
+    num : 10
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
+- # token小于64
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : asd
+    username: tt
+    num : 10
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
+- # token为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token :
+    username: tt
+    num : 10
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试搜索成功"
+
+- # 用户名有特殊字符
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt@
+    num : 10
+  check:
+    - ret=200
+    - msg=
+  detail:
+    "测试搜索失败"
+
+- # uuid大于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655Basdasd
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    num : 10
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
+- # uuid小于32
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1D
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    num : 10
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试搜索失败"
+
+- # uuid为空
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid :
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    num : 10
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  detail:
+    "测试搜索成功"
+
+- # num大于100
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    num : 101
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
+- # num小于1
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    num : 0.1
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
+- # num为非数字
+  url: http://hd215.api.yesapi.cn/?s=App.User.Search
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid : 6D0FD9A61A586CA1DDA551690542655B
+    token : 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    num : 谭谭
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  detail:
+    "测试搜索失败"
+
