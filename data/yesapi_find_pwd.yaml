@@ -8,8 +8,6 @@
  check:
    - ret=200
    - err_code=0
-   - err_msg=
-   - msg=
  doc:
    "找回密码成功_必填项正确"
 - #找回密码失败_appkey长度不是32位
@@ -21,9 +19,7 @@
      username: tom
  check:
        - ret=400
-       - err_code=1
-       - msg=客户端非法请求
-       - err_msg=
+       - msg=客户端非法请
  doc:
        "找回密码失败_appkey长度不是32位"
 - #找回密码失败_appkey为空
@@ -36,8 +32,6 @@
  check:
    - ret=400
    - msg=客户端非法请求：缺少必要参数
-   - err_code=1
-   - err_msg=
  doc:
        "找回密码失败_app_key为空"
 - #找回密码失败_用户名为空
@@ -50,8 +44,6 @@
  check:
    - ret=400
    - msg=客户端非法请求：缺少必要参数
-   - err_code=1
-   - err_msg=
  doc:
        "找回密码失败_用户名为空"
 - #找回密码失败_用户名不存在
@@ -62,9 +54,7 @@
      app_key: C994CAD603F44C998700EB802A9240D0
      username: peter
  check:
-   - ret=200
-   - err_code=2
-   - err_code=1
-   - err_msg=
+   - ret=401
+   - err_code=用户未登录，或登录凭证已过期
  doc:
        "找回密码失败_用户名不存在"
