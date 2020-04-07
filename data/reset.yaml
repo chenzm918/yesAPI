@@ -1,4 +1,5 @@
 - # 所有选项输入合法
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -7,6 +8,8 @@
     username: tt
     code : 123
     newpassword : e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
@@ -15,12 +18,15 @@
     "测试重置密码成功"
 
 - # 必填项输入合法
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
@@ -29,48 +35,58 @@
     "测试重置密码成功"
 
 - # 必填项APP_key为空
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key:
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 0'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败，必填项APP_key为空"
 
 - # 必填项APP_key大于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key : E1AECD502087E03E96B219098075870Baa
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：app_key.len应该小于等于32, 但现在app_key.len = 35'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败，必填项APP_key大于32"
 
 - # 必填项APP_key小于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key : E1AECD502087E03E96B2
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 14'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败，必填项APP_key小于32"
 
 - # new_password为空
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
     data:
       app_key: E1AECD502087E03E96B219098075870B
@@ -79,14 +95,17 @@
       username: tt
       code: 123
       newpassword:
+    jiami: true
+    tokenis: true
     check:
       - ret=200
       - err_code=0
-      - err_msg=
+      - '"msg=客户端非法请求：缺少必要参数new_password'"
     detail:
-      "测试重置密码失败"
+      "测试重置密码失败,new_password为空"
 
 - # new_password小于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -95,14 +114,17 @@
     username: tt
     code: 123
     newpassword: e10adc3949ba59ab
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：缺少必要参数new_password'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,new_password小于32"
 
 - # new_password大于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -111,14 +133,17 @@
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883ewwwwwwwwwwww
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：缺少必要参数new_password'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,new_password大于32"
 
 - # uuid大于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -127,13 +152,16 @@
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 35'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,uuid大于32"
 
 - # uuid小于32
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -142,14 +170,17 @@
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 20'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,uuid小于32"
 
 - # uuid为空
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -158,14 +189,17 @@
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=200
     - err_code=0
-    - err_msg=
+    - '"msg=客户端非法请求：缺少必要参数new_password'"
   detail:
-    "测试重置密码成功"
+    "测试重置密码成功,uuid为空"
 
 - # username大于50
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -174,13 +208,16 @@
     username: ttwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：缺少必要参数new_password'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,username大于50"
 
 - # username为空
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -189,13 +226,16 @@
     username:
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：username.len应该大于或等于1, 但现在username.len = 0'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,username为空"
 
 - # username含有特殊字符
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -204,13 +244,16 @@
     username: tt@@@
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：缺少必要参数new_password'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,username含有特殊字符"
 
 - # token大于64
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -219,13 +262,16 @@
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 73'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,token大于64"
 
 - # token小于64
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -234,13 +280,16 @@
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 20'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,token小于64"
 
 - # token为空
+  method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
   data:
     app_key: E1AECD502087E03E96B219098075870B
@@ -249,8 +298,10 @@
     username: tt
     code: 123
     newpassword: e10adc3949ba59abbe56e057f20f883e
+  jiami: true
+  tokenis: true
   check:
     - ret=400
-    - msg=客户端非法请求
+    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 0'"
   detail:
-    "测试重置密码失败"
+    "测试重置密码失败,token为空"
