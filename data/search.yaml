@@ -40,7 +40,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 0'"
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 0"'
   detail:
     "测试搜索失败，APP_key为空"
 
@@ -53,7 +53,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：app_key.len应该小于等于32, 但现在app_key.len = 34'"
+    - '"msg=客户端非法请求：app_key.len应该小于等于32, 但现在app_key.len = 34"'
   detail:
     "测试搜索失败，APP_key大于32"
 
@@ -66,7 +66,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 20'"
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 20"'
   detail:
     "测试搜索失败，APP_key小于32"
 
@@ -100,7 +100,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：token.len应该大于或等于64, 但现在token.len = 3'"
+    - '"msg=客户端非法请求：token.len应该大于或等于64, 但现在token.len = 3"'
   detail:
     "测试搜索失败，token小于64"
 
@@ -118,7 +118,7 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：token.len应该大于或等于64, 但现在token.len = 0'"
+    - '"msg=客户端非法请求：token.len应该大于或等于64, 但现在token.len = 0"'
   detail:
     "测试搜索失败,token为空"
 
@@ -153,7 +153,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 38'"
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 38"'
   detail:
     "测试搜索失败，uuid大于32"
 
@@ -171,7 +171,7 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 20'"
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 20"'
   detail:
     "测试搜索失败，uuid小于32"
 
@@ -206,7 +206,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：num应该小于等于100, 但现在num = 101'"
+    - '"msg=客户端非法请求：num应该小于等于100, 但现在num = 101"'
   detail:
     "测试搜索失败，num大于100"
 
@@ -223,7 +223,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：num应该大于或等于1, 但现在num = 0'"
+    - '"msg=客户端非法请求：num应该大于或等于1, 但现在num = 0"'
   detail:
     "测试搜索失败，num小于1"
 
@@ -240,7 +240,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：num应该大于或等于1, 但现在num = 0'"
+    - '"msg=客户端非法请求：num应该大于或等于1, 但现在num = 0"'
   detail:
     "测试搜索失败，num为非数字"
 

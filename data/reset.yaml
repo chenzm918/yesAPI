@@ -47,7 +47,7 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 0'"
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 0"'
   detail:
     "测试重置密码失败，必填项APP_key为空"
 
@@ -64,7 +64,7 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：app_key.len应该小于等于32, 但现在app_key.len = 35'"
+    - '"msg=客户端非法请求：app_key.len应该小于等于32, 但现在app_key.len = 35"'
   detail:
     "测试重置密码失败，必填项APP_key大于32"
 
@@ -81,28 +81,28 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 14'"
+    - '"msg=客户端非法请求：app_key.len应该大于或等于32, 但现在app_key.len = 14"'
   detail:
     "测试重置密码失败，必填项APP_key小于32"
 
 - # new_password为空
   method: post
   url: http://hd215.api.yesapi.cn/?s=App.User.ResetPasswordWithEmailCode
-    data:
-      app_key: E1AECD502087E03E96B219098075870B
-      uuid: 6D0FD9A61A586CA1DDA551690542655B
-      token: 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
-      username: tt
-      code: 123
-      newpassword:
-    jiami: true
-    tokenis: true
-    check:
-      - ret=200
-      - err_code=0
-      - '"msg=客户端非法请求：缺少必要参数new_password'"
-    detail:
-      "测试重置密码失败,new_password为空"
+  data:
+    app_key: E1AECD502087E03E96B219098075870B
+    uuid: 6D0FD9A61A586CA1DDA551690542655B
+    token: 66582C4E41ED740F4EAABB25CC09C710D33D4F49303507B0D92B8D5D46A29274
+    username: tt
+    code: 123
+    newpassword:
+  jiami: true
+  tokenis: true
+  check:
+    - ret=200
+    - err_code=0
+    - '"msg=客户端非法请求：缺少必要参数new_password"'
+  detail:
+    "测试重置密码失败,new_password为空"
 
 - # new_password小于32
   method: post
@@ -119,7 +119,7 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：缺少必要参数new_password'"
+    - '"msg=客户端非法请求：缺少必要参数new_password"'
   detail:
     "测试重置密码失败,new_password小于32"
 
@@ -138,7 +138,7 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：缺少必要参数new_password'"
+    - '"msg=客户端非法请求：缺少必要参数new_password"'
   detail:
     "测试重置密码失败,new_password大于32"
 
@@ -156,7 +156,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 35'"
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 35"'
   detail:
     "测试重置密码失败,uuid大于32"
 
@@ -175,7 +175,7 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 20'"
+    - '"msg=客户端非法请求：uuid.len应该小于等于32, 但现在uuid.len = 20"'
   detail:
     "测试重置密码失败,uuid小于32"
 
@@ -194,7 +194,7 @@
   check:
     - ret=200
     - err_code=0
-    - '"msg=客户端非法请求：缺少必要参数new_password'"
+    - '"msg=客户端非法请求：缺少必要参数new_password"'
   detail:
     "测试重置密码成功,uuid为空"
 
@@ -212,7 +212,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：缺少必要参数new_password'"
+    - '"msg=客户端非法请求：缺少必要参数new_password"'
   detail:
     "测试重置密码失败,username大于50"
 
@@ -230,7 +230,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：username.len应该大于或等于1, 但现在username.len = 0'"
+    - '"msg=客户端非法请求：username.len应该大于或等于1, 但现在username.len = 0"'
   detail:
     "测试重置密码失败,username为空"
 
@@ -248,7 +248,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：缺少必要参数new_password'"
+    - '"msg=客户端非法请求：缺少必要参数new_password"'
   detail:
     "测试重置密码失败,username含有特殊字符"
 
@@ -266,7 +266,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 73'"
+    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 73"'
   detail:
     "测试重置密码失败,token大于64"
 
@@ -284,7 +284,7 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 20'"
+    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 20"'
   detail:
     "测试重置密码失败,token小于64"
 
@@ -302,6 +302,6 @@
   tokenis: true
   check:
     - ret=400
-    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 0'"
+    - '"msg=客户端非法请求：token.len应该小于等于64, 但现在token.len = 0"'
   detail:
     "测试重置密码失败,token为空"
