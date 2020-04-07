@@ -1,0 +1,124 @@
+- #修改会员扩展信息成功_必填项正确
+  method: post
+  data:
+    s: App.User.UpdateExtInfo
+    app_key: C994CAD603F44C998700EB802A9240D0
+    uuid: 65b8fc52b2094077ec74dede933895f1
+    token:
+    ext_info:
+      nickname: "supertom"
+      age: 28
+      location: "四川"
+  datalogin:
+      s: App.User.Login
+      app_key: C994CAD603F44C998700EB802A9240D0
+      username: tom
+      password: 123456
+  jiami: true
+  tokenis: true
+  ext_infois: true
+  check:
+    - ret=200
+    - err_code=0
+    - err_msg=
+  doc:
+    "修改会员扩展信息成功_必填项正确"
+
+- #修改会员扩展信息失败_app_key为空
+  method: post
+  data:
+    s: App.User.UpdateExtInfo
+    app_key:
+    uuid: 65b8fc52b2094077ec74dede933895f1
+    token:
+    ext_info:
+      nickname: "supertom"
+      age: 28
+      location: "四川"
+  datalogin:
+      s: App.User.Login
+      app_key: C994CAD603F44C998700EB802A9240D0
+      username: tom
+      password: 123456
+  jiami: true
+  tokenis: true
+  ext_infois: true
+  check:
+    - ret=400
+    - msg=客户端非法请求：缺少必要参数app_key
+  doc:
+    "修改会员扩展信息失败_app_key为空"
+
+- #修改会员扩展信息失败_uuid为空
+  method: post
+  data:
+    s: App.User.UpdateExtInfo
+    app_key: C994CAD603F44C998700EB802A9240D0
+    uuid:
+    token:
+    ext_info:
+      nickname: "supertom"
+      age: 28
+      location: "四川"
+  datalogin:
+      s: App.User.Login
+      app_key: C994CAD603F44C998700EB802A9240D0
+      username: tom
+      password: 123456
+  jiami: true
+  tokenis: true
+  ext_infois: true
+  check:
+    - ret=400
+    - msg=客户端非法请求：缺少必要参数uuid
+  doc:
+    "修改会员扩展信息失败_uuid为空"
+
+- #修改会员扩展信息失败_token为空
+  method: post
+  data:
+    s: App.User.UpdateExtInfo
+    app_key: C994CAD603F44C998700EB802A9240D0
+    uuid: 65b8fc52b2094077ec74dede933895f1
+    token:
+    ext_info:
+      nickname: "supertom"
+      age: 28
+      location: "四川"
+  datalogin:
+      s: App.User.Login
+      app_key: C994CAD603F44C998700EB802A9240D0
+      username: tom
+      password: 123456
+  jiami: true
+  tokenis: false
+  ext_infois: true
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  doc:
+    "修改会员扩展信息成功_必填项正确"
+- #修改会员扩展信息失败_ext_info格式错误
+  method: post
+  data:
+    s: App.User.UpdateExtInfo
+    app_key: C994CAD603F44C998700EB802A9240D0
+    uuid: 65b8fc52b2094077ec74dede933895f1
+    token:
+    ext_info:
+      nickname: "supertom"
+      age: 28
+      location: "四川成都"
+  datalogin:
+      s: App.User.Login
+      app_key: C994CAD603F44C998700EB802A9240D0
+      username: tom
+      password: 123456
+  jiami: true
+  tokenis: true
+  ext_infois: false
+  check:
+    - ret=400
+    - msg=客户端非法请求
+  doc:
+    "修改会员扩展信息失败_ext_info格式错误"

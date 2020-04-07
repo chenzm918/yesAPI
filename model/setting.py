@@ -12,7 +12,7 @@ import time
 
 
 
-
+API_URL="http://hn216.api.yesapi.cn/"
 #获取动态时间
 
 TIME = time.strftime("%Y_%m_%d_%H_%S")
