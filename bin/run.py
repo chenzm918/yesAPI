@@ -7,6 +7,7 @@
 @time:2020/4/3  10:44
 @desc
 '''
+
 import unittest
 from BeautifulReport import BeautifulReport
 from model.setting import *
